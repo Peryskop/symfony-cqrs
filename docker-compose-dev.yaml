@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  symfony-cqrs-db:
+    container_name: symfony-cqrs-db-dev
+    ports:
+      - '33060:3306'
+
+  symfony-cqrs-php:
+    container_name: symfony-cqrs-php-dev
+    ports:
+      - '2222:22'
+    volumes:
+      - symfony-cqrs-api-app-sync:/app
+    environment:
+      APP_ENV: dev
+      APP_VERSION: dev
+      DATABASE_URL: mysql://root:@symfony-cqrs-db:3306/symfony-cqrs?serverVersion=MariaDB-10.6.10
+
+  symfony-cqrs-nginx:
+    container_name: symfony-cqrs-nginx-dev
+    ports:
+      - '9090:80'
+    volumes:
+      - symfony-cqrs-api-app-sync:/app
+
+volumes:
+  symfony-cqrs-api-app-sync:
+    external: true

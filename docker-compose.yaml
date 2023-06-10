@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  symfony-cqrs-db:
+    image: mariadb:10.6.10
+    command: --sql_mode=""
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    volumes:
+      - symfony-cqrs_db_data:/var/lib/mysql
+
+  symfony-cqrs-php:
+    build: docker/php-fpm
+    working_dir: /app
+    volumes:
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
+      - .:/app:cached
+    depends_on:
+      - symfony-cqrs-db
+
+  symfony-cqrs-nginx:
+    image: nginx:latest
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/app:cached
+    depends_on:
+      - symfony-cqrs-php
+
+volumes:
+  symfony-cqrs_db_data:

@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  symfony-cqrs-db-test:
+    container_name: symfony-cqrs-db-test
+    ports:
+      - '33067:3306'
+    volumes:
+      - symfony-cqrs_db_data-test:/var/lib/mysql
+
+  symfony-cqrs-php-test:
+    container_name: symfony-cqrs-php-test
+    restart: always
+    build: docker/php-fpm
+    ports:
+      - '2227:22'
+    working_dir: /app
+    environment:
+      APP_ENV: test
+      APP_VERSION: test
+      DATABASE_URL: mysql://root:@symfony-cqrs-db-test:3306/symfony-cqrs-test?serverVersion=MariaDB-10.6.10
+    volumes:
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
+      - .:/app:cached
+      - symfony-cqrs-api-app-sync:/app:nocopy
+    depends_on:
+      - symfony-cqrs-db-test
+
+  symfony-cqrs-nginx-test:
+    container_name: symfony-cqrs-nginx-test
+    restart: always
+    image: nginx:latest
+    ports:
+      - '9097:80'
+    volumes:
+      - ./docker/nginx/nginx-test.conf:/etc/nginx/conf.d/default.conf
+      - .:/app:cached
+      - symfony-cqrs-api-app-sync:/app:nocopy
+    depends_on:
+      - symfony-cqrs-php-test
+
+volumes:
+  symfony-cqrs_db_data-test:
+  symfony-cqrs-api-app-sync:
+    external: true
