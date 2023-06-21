@@ -1,5 +1,24 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+create_post:
+    path: /api/posts
+    controller: App\Domain\Post\Action\CreatePostAction
+    methods: POST
+
+update_post:
+    path: /api/posts/{uuid}
+    controller: App\Domain\Post\Action\UpdatePostAction
+    methods: PUT
+
+delete_post:
+    path: /api/posts/{uuid}
+    controller: App\Domain\Post\Action\DeletePostAction
+    methods: DELETE
+
+find_post:
+    path: /api/posts/{uuid}
+    controller: App\Domain\Post\Action\FindPostAction
+    methods: GET
+
+get_posts:
+    path: /api/posts
+    controller: App\Domain\Post\Action\GetPostsAction
+    methods: GET
