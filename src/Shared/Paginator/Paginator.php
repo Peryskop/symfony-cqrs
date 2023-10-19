@@ -9,7 +9,7 @@ use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpFoundation\Response;
 
-final class Paginator
+final class Paginator implements PaginatorInterface
 {
     public const PAGINATOR_DEFAULT_PAGE = 1;
 
@@ -33,7 +33,6 @@ final class Paginator
         return $paginator;
     }
 
-    /** @param mixed[] $collection */
     public function createPaginatedResponse(iterable $collection, Pagerfanta $paginator): PaginatedCollection
     {
         return new PaginatedCollection(
@@ -44,10 +43,6 @@ final class Paginator
         );
     }
 
-    /**
-     * @param mixed[] $collection
-     * @param mixed[] $metadata
-     */
     public function createCustomPaginatedResponse(iterable $collection, array $metadata): PaginatedCollection
     {
         return new PaginatedCollection(

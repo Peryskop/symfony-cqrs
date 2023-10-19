@@ -1,24 +1,24 @@
 create_post:
     path: /api/posts
-    controller: App\Domain\Post\Action\CreatePostAction
+    controller: App\Core\Presentation\Rest\Post\CreatePostAction
     methods: POST
 
 update_post:
     path: /api/posts/{uuid}
-    controller: App\Domain\Post\Action\UpdatePostAction
+    controller: App\Core\Presentation\Rest\Post\UpdatePostAction
     methods: PUT
 
 delete_post:
     path: /api/posts/{uuid}
-    controller: App\Domain\Post\Action\DeletePostAction
+    controller: App\Core\Presentation\Rest\Post\DeletePostAction
     methods: DELETE
 
 find_post:
     path: /api/posts/{uuid}
-    controller: App\Domain\Post\Action\FindPostAction
+    controller: App\Core\Presentation\Rest\Post\FindPostAction
     methods: GET
 
 get_posts:
     path: /api/posts
-    controller: App\Domain\Post\Action\GetPostsAction
+    controller: App\Core\Presentation\Rest\Post\GetPostsAction
     methods: GET
