@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Resolver;
+namespace App\Post\Application\Resolver;
 
-use App\Core\Application\Post\Command\CreatePostCommand;
-use App\Core\Application\Post\Command\DeletePostCommand;
-use App\Core\Application\Post\Command\UpdatePostCommand;
-use App\Core\Domain\Post\Factory\PostCommandFactoryInterface;
+use App\Post\Application\Command\CreatePostCommand;
+use App\Post\Application\Command\DeletePostCommand;
+use App\Post\Application\Command\UpdatePostCommand;
+use App\Post\Domain\Factory\PostCommandFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

@@ -16,8 +16,8 @@ doctrine:
             Post:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/Core/Infrastructure/ORM/Mapping'
-                prefix: 'App\Core\Domain\Post\Model'
+                dir: '%kernel.project_dir%/src/Post/Infrastructure/ORM/Mapping'
+                prefix: 'App\Post\Domain\Model'
                 alias: Post
 
 when@test:

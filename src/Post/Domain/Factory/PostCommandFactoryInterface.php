@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Factory;
+namespace App\Post\Domain\Factory;
 
-use App\Core\Application\Post\Command\CreatePostCommand;
-use App\Core\Application\Post\Command\DeletePostCommand;
-use App\Core\Application\Post\Command\UpdatePostCommand;
+use App\Post\Application\Command\CreatePostCommand;
+use App\Post\Application\Command\DeletePostCommand;
+use App\Post\Application\Command\UpdatePostCommand;
 use Symfony\Component\HttpFoundation\Request;
 
 interface PostCommandFactoryInterface

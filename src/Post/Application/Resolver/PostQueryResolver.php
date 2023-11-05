@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Resolver;
+namespace App\Post\Application\Resolver;
 
-use App\Core\Application\Post\Query\FindPostQuery;
-use App\Core\Application\Post\Query\GetPostsQuery;
-use App\Core\Domain\Post\Factory\PostQueryFactoryInterface;
+use App\Post\Application\Query\FindPostQuery;
+use App\Post\Application\Query\GetPostsQuery;
+use App\Post\Domain\Factory\PostQueryFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

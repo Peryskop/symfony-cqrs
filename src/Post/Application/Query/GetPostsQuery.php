@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Query;
+namespace App\Post\Application\Query;
 
 use App\Shared\Query\QueryInterface;
 

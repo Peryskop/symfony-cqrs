@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Presentation\Rest\Post;
+namespace App\Post\Presentation\Rest;
 
-use App\Core\Application\Post\Query\FindPostQuery;
-use App\Core\Application\Post\Resolver\MapPostQuery;
-use App\Core\Domain\Post\Factory\ResponseFactory;
+use App\Post\Application\Query\FindPostQuery;
+use App\Post\Application\Resolver\MapPostQuery;
+use App\Post\Domain\Factory\ResponseFactory;
 use App\Shared\Query\MessengerQueryBus;
 use App\Shared\Response\AbstractApiResponse;
 use JMS\Serializer\SerializerInterface;

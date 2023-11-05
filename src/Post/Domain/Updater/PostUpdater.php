@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Updater;
+namespace App\Post\Domain\Updater;
 
-use App\Core\Application\Post\Command\UpdatePostCommand;
-use App\Core\Domain\Post\Model\Post;
+use App\Post\Application\Command\UpdatePostCommand;
+use App\Post\Domain\Model\Post;
 
 final class PostUpdater implements PostUpdaterInterface
 {

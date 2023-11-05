@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Factory;
+namespace App\Post\Domain\Factory;
 
-use App\Core\Domain\Post\Model\Post;
-use App\Core\Infrastructure\Response\Post\FindPostResponse;
+use App\Post\Domain\Model\Post;
+use App\Post\Infrastructure\Response\FindPostResponse;
 
 interface ResponseFactoryInterface
 {

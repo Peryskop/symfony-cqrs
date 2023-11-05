@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Presentation\Rest\Post;
+namespace App\Post\Presentation\Rest;
 
-use App\Core\Application\Post\Command\UpdatePostCommand;
-use App\Core\Application\Post\Resolver\MapPostCommand;
+use App\Post\Application\Command\UpdatePostCommand;
+use App\Post\Application\Resolver\MapPostCommand;
 use App\Shared\Command\MessengerCommandBus;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

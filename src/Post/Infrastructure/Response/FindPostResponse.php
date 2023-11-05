@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Infrastructure\Response\Post;
+namespace App\Post\Infrastructure\Response;
 
 use JMS\Serializer\Annotation as Serialization;
 

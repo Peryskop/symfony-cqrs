@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Factory;
+namespace App\Post\Domain\Factory;
 
-use App\Core\Application\Post\Query\FindPostQuery;
-use App\Core\Application\Post\Query\GetPostsQuery;
+use App\Post\Application\Query\FindPostQuery;
+use App\Post\Application\Query\GetPostsQuery;
 use Symfony\Component\HttpFoundation\Request;
 
 interface PostQueryFactoryInterface

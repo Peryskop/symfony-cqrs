@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Handler;
+namespace App\Post\Application\Handler;
 
-use App\Core\Application\Post\Query\GetPostsQuery;
-use App\Core\Infrastructure\Repository\Post\PostRepositoryInterface;
+use App\Post\Application\Query\GetPostsQuery;
+use App\Post\Infrastructure\Repository\PostRepositoryInterface;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

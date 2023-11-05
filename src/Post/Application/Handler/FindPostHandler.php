@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Handler;
+namespace App\Post\Application\Handler;
 
-use App\Core\Application\Post\Query\FindPostQuery;
-use App\Core\Domain\Post\Model\Post;
-use App\Core\Infrastructure\Repository\Post\PostRepositoryInterface;
+use App\Post\Application\Query\FindPostQuery;
+use App\Post\Domain\Model\Post;
+use App\Post\Infrastructure\Repository\PostRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

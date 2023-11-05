@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Infrastructure\Repository\Post;
+namespace App\Post\Infrastructure\Repository;
 
-use App\Core\Domain\Post\Model\Post;
+use App\Post\Domain\Model\Post;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Uid\Uuid;
 

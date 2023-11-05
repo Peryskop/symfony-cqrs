@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Handler;
+namespace App\Post\Application\Handler;
 
-use App\Core\Application\Post\Command\DeletePostCommand;
-use App\Core\Infrastructure\Repository\Post\PostRepositoryInterface;
+use App\Post\Application\Command\DeletePostCommand;
+use App\Post\Infrastructure\Repository\PostRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Uid\Uuid;
 

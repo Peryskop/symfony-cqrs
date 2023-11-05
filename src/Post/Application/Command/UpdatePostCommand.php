@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Application\Post\Command;
+namespace App\Post\Application\Command;
 
 use App\Shared\Command\CommandInterface;
 

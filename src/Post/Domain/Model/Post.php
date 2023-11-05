@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Model;
+namespace App\Post\Domain\Model;
 
 use Symfony\Component\Uid\Uuid;
 

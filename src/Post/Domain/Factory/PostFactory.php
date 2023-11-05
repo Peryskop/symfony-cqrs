@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Domain\Post\Factory;
+namespace App\Post\Domain\Factory;
 
-use App\Core\Application\Post\Command\CreatePostCommand;
-use App\Core\Domain\Post\Model\Post;
+use App\Post\Application\Command\CreatePostCommand;
+use App\Post\Domain\Model\Post;
 use Symfony\Component\Uid\Uuid;
 
 final class PostFactory implements PostFactoryInterface
