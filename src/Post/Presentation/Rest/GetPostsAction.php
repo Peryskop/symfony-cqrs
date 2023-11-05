@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Presentation\Rest\Post;
+namespace App\Core\Presentation\Rest;
 
 use App\Core\Application\Post\Query\GetPostsQuery;
 use App\Core\Application\Post\Resolver\MapPostQuery;
