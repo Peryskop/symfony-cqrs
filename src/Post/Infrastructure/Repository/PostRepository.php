@@ -32,10 +32,10 @@ final class PostRepository extends ServiceEntityRepository implements PostReposi
         $this->_em->flush();
     }
 
-    public function deleteByUuid(Uuid $uuid): void
+    public function deleteByUuid(string $uuid): void
     {
         $post = $this->findOneBy([
-            'uuid' => $uuid,
+            'uuid' => Uuid::fromString($uuid),
         ]);
         $this->_em->remove($post);
         $this->flush();

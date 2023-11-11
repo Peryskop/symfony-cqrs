@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="false" autoconfigure="false" public="false"/>
+
+        <service class="App\Post\Presentation\Rest\CreatePostAction"
+                 id="post.presentation.rest.create_post_action">
+            <argument type="service" id="command.messenger_command"/>
+            <argument type="service" id="post.application.command.create_post_command"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service class="App\Post\Presentation\Rest\DeletePostAction"
+                 id="post.presentation.rest.delete_post_action">
+            <argument type="service" id="command.messenger_command"/>
+            <argument type="service" id="post.application.command.delete_post_command"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service class="App\Post\Presentation\Rest\FindPostAction"
+                 id="post.presentation.rest.find_post_action">
+            <argument type="service" id="jms_serializer"/>
+            <argument type="service" id="query.messenger_query"/>
+            <argument type="service" id="post.domain.factory.response_factory"/>
+            <argument type="service" id="post.application.query.find_post_query"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service class="App\Post\Presentation\Rest\GetPostsAction"
+                 id="post.presentation.rest.get_posts_action">
+            <argument type="service" id="jms_serializer"/>
+            <argument type="service" id="query.messenger_query"/>
+            <argument type="service" id="paginator"/>
+            <argument type="service" id="post.domain.factory.response_factory"/>
+            <argument type="service" id="post.application.query.get_posts_query"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service class="App\Post\Presentation\Rest\UpdatePostAction"
+                 id="post.presentation.rest.update_post_action">
+            <argument type="service" id="command.messenger_command"/>
+            <argument type="service" id="post.application.command.update_post_command"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+    </services>
+</container>

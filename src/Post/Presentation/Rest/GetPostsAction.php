@@ -4,36 +4,34 @@ declare(strict_types=1);
 
 namespace App\Post\Presentation\Rest;
 
-use App\Post\Application\Query\GetPostsQuery;
-use App\Post\Application\Resolver\MapPostQuery;
-use App\Post\Domain\Factory\ResponseFactory;
+use App\Post\Application\Query\GetPostsQueryInterface;
+use App\Post\Domain\Factory\ResponseFactoryInterface;
 use App\Shared\Paginator\PaginatorInterface;
-use App\Shared\Query\MessengerQueryBus;
+use App\Shared\Query\QueryBusInterface;
 use App\Shared\Response\AbstractApiResponse;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\AsController;
 
-#[AsController]
 final class GetPostsAction extends AbstractApiResponse
 {
     public function __construct(
         readonly SerializerInterface $serializer,
-        private readonly MessengerQueryBus $bus,
+        private readonly QueryBusInterface $bus,
         private readonly PaginatorInterface $paginator,
-        private readonly ResponseFactory $responseFactory
+        private readonly ResponseFactoryInterface $responseFactory,
+        private readonly GetPostsQueryInterface $getPostsQuery
     ) {
         parent::__construct($serializer);
     }
 
-    public function __invoke(#[MapPostQuery] GetPostsQuery $getPostsQuery): Response
+    public function __invoke(): Response
     {
-        $postsQueryBuilder = $this->bus->handle($getPostsQuery);
+        $postsQueryBuilder = $this->bus->handle($this->getPostsQuery);
 
         $paginator = $this->paginator->createPaginator(
             $postsQueryBuilder,
-            $getPostsQuery->getPage(),
-            $getPostsQuery->getLimit()
+            $this->getPostsQuery->getPage(),
+            $this->getPostsQuery->getLimit()
         );
 
         $dtos = $this->responseFactory->createFromPosts($paginator);

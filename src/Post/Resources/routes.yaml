@@ -1,0 +1,24 @@
+create_post:
+  path: /api/posts
+  controller: "post.presentation.rest.create_post_action"
+  methods: POST
+
+update_post:
+  path: /api/posts/{uuid}
+  controller: "post.presentation.rest.update_post_action"
+  methods: PUT
+
+delete_post:
+  path: /api/posts/{uuid}
+  controller: "post.presentation.rest.delete_post_action"
+  methods: DELETE
+
+find_post:
+  path: /api/posts/{uuid}
+  controller: "post.presentation.rest.find_post_action"
+  methods: GET
+
+get_posts:
+  path: /api/posts
+  controller: "post.presentation.rest.get_posts_action"
+  methods: GET

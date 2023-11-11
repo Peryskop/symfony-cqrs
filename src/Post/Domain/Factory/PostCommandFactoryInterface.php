@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Post\Domain\Factory;
 
-use App\Post\Application\Command\CreatePostCommand;
-use App\Post\Application\Command\DeletePostCommand;
-use App\Post\Application\Command\UpdatePostCommand;
-use Symfony\Component\HttpFoundation\Request;
+use App\Post\Application\Command\CreatePostCommandInterface;
+use App\Post\Application\Command\DeletePostCommandInterface;
+use App\Post\Application\Command\UpdatePostCommandInterface;
 
 interface PostCommandFactoryInterface
 {
-    public function createCreatePostCommandFromRequest(Request $request): CreatePostCommand;
+    public function createCreatePostCommand(): CreatePostCommandInterface;
 
-    public function createUpdatePostCommandFromRequest(Request $request): UpdatePostCommand;
+    public function createUpdatePostCommand(): UpdatePostCommandInterface;
 
-    public function createDeletePostCommandFromRequest(Request $request): DeletePostCommand;
+    public function createDeletePostCommand(): DeletePostCommandInterface;
 }

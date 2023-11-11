@@ -4,28 +4,26 @@ declare(strict_types=1);
 
 namespace App\Post\Presentation\Rest;
 
-use App\Post\Application\Command\CreatePostCommand;
-use App\Post\Application\Resolver\MapPostCommand;
-use App\Shared\Command\MessengerCommandBus;
+use App\Post\Application\Command\CreatePostCommandInterface;
+use App\Shared\Command\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\AsController;
 
-#[AsController]
 final readonly class CreatePostAction
 {
     public function __construct(
-        private MessengerCommandBus $bus
+        private CommandBusInterface $bus,
+        private CreatePostCommandInterface $createPostCommand
     ) {
     }
 
-    public function __invoke(#[MapPostCommand] CreatePostCommand $createPostCommand): Response
+    public function __invoke(): Response
     {
-        $this->bus->dispatch($createPostCommand);
+        $this->bus->dispatch($this->createPostCommand);
 
         return new JsonResponse(
             [
-                "postId" => $createPostCommand->uuid,
+                "postId" => $this->createPostCommand->getUuid(),
             ],
             Response::HTTP_ACCEPTED
         );

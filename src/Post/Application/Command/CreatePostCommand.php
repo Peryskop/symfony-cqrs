@@ -4,13 +4,21 @@ declare(strict_types=1);
 
 namespace App\Post\Application\Command;
 
-use App\Shared\Command\CommandInterface;
-
-final readonly class CreatePostCommand implements CommandInterface
+final readonly class CreatePostCommand implements CreatePostCommandInterface
 {
     public function __construct(
-        public ?string $uuid = null,
-        public ?string $description = null
+        private ?string $uuid = null,
+        private ?string $description = null
     ) {
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 }

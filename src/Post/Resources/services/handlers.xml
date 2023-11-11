@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="false" autoconfigure="false" public="false"/>
+
+        <service class="App\Post\Application\Handler\CreatePostHandler"
+                 id="post.application.handler.create_post_handler">
+            <argument type="service" id="post.domain.factory.post_factory"/>
+            <argument type="service" id="post.infrastructure.repository.post_repository"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service class="App\Post\Application\Handler\GetPostsHandler"
+                 id="post.application.handler.get_posts_handler">
+            <argument type="service" id="post.infrastructure.repository.post_repository"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service class="App\Post\Application\Handler\FindPostHandler"
+                 id="post.application.handler.find_post_handler">
+            <argument type="service" id="post.infrastructure.repository.post_repository"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service class="App\Post\Application\Handler\UpdatePostHandler"
+                 id="post.application.handler.update_post_handler">
+            <argument type="service" id="post.domain.updater.post_updater"/>
+            <argument type="service" id="post.infrastructure.repository.post_repository"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service class="App\Post\Application\Handler\DeletePostHandler"
+                 id="post.application.handler.delete_post_handler">
+            <argument type="service" id="post.infrastructure.repository.post_repository"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+    </services>
+</container>

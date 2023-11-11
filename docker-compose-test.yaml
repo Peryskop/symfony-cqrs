@@ -18,7 +18,7 @@ services:
     environment:
       APP_ENV: test
       APP_VERSION: test
-      DATABASE_URL: mysql://root:@symfony-cqrs-db-test:3306/symfony-cqrs-test?serverVersion=MariaDB-10.6.10
+      DATABASE_URL: mysql://root:@symfony-cqrs-db-test:3306/symfony-cqrs-test?serverVersion=10.6.10-MariaDB
     volumes:
       - ./docker/php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
       - .:/app:cached

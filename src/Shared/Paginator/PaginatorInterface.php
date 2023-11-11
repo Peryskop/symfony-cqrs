@@ -9,7 +9,17 @@ use Pagerfanta\Pagerfanta;
 
 interface PaginatorInterface
 {
-    public function createPaginator(QueryBuilder $queryBuilder, int $page, int $limit): Pagerfanta;
+    public const PAGINATOR_DEFAULT_PAGE = 1;
+
+    public const PAGINATOR_DEFAULT_LIMIT = 20;
+
+    public function createPaginator(
+        QueryBuilder $queryBuilder,
+        int $page = self::PAGINATOR_DEFAULT_PAGE,
+        int $limit = self::PAGINATOR_DEFAULT_LIMIT,
+        bool $fetchJoinCollection = false,
+        bool $useOutputWalkers = false
+    ): Pagerfanta;
 
     /** @param mixed[] $collection */
     public function createPaginatedResponse(iterable $collection, Pagerfanta $paginator): PaginatedCollection;

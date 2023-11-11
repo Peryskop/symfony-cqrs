@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Post\Application\Handler;
 
-use App\Post\Application\Command\UpdatePostCommand;
+use App\Post\Application\Command\UpdatePostCommandInterface;
 use App\Post\Domain\Updater\PostUpdaterInterface;
 use App\Post\Infrastructure\Repository\PostRepositoryInterface;
-use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-#[AsMessageHandler]
 final readonly class UpdatePostHandler
 {
     public function __construct(
@@ -18,9 +16,9 @@ final readonly class UpdatePostHandler
     ) {
     }
 
-    public function __invoke(UpdatePostCommand $updatePostCommand): void
+    public function __invoke(UpdatePostCommandInterface $updatePostCommand): void
     {
-        $post = $this->postRepository->findPostByUuid($updatePostCommand->uuid);
+        $post = $this->postRepository->findPostByUuid($updatePostCommand->getUuid());
 
         $this->postUpdater->update($post, $updatePostCommand);
 

@@ -11,14 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class Paginator implements PaginatorInterface
 {
-    public const PAGINATOR_DEFAULT_PAGE = 1;
-
-    public const PAGINATOR_DEFAULT_LIMIT = 20;
-
     public function createPaginator(
         QueryBuilder $queryBuilder,
         int $page = self::PAGINATOR_DEFAULT_PAGE,
-        int $limit = self::PAGINATOR_DEFAULT_LIMIT
+        int $limit = self::PAGINATOR_DEFAULT_LIMIT,
+        bool $fetchJoinCollection = false,
+        bool $useOutputWalkers = false
     ): Pagerfanta {
         $paginator = new Pagerfanta(new QueryAdapter($queryBuilder, false, false));
 

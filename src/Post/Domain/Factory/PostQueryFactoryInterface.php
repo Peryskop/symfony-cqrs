@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Post\Domain\Factory;
 
-use App\Post\Application\Query\FindPostQuery;
-use App\Post\Application\Query\GetPostsQuery;
-use Symfony\Component\HttpFoundation\Request;
+use App\Post\Application\Query\FindPostQueryInterface;
+use App\Post\Application\Query\GetPostsQueryInterface;
 
 interface PostQueryFactoryInterface
 {
-    public function createGetPostsQueryFromRequest(Request $request): GetPostsQuery;
+    public function createGetPostsQuery(): GetPostsQueryInterface;
 
-    public function createFindPostQueryFromRequest(Request $request): FindPostQuery;
+    public function createFindPostQuery(): FindPostQueryInterface;
 }

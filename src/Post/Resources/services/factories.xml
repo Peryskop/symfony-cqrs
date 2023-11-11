@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="false" autoconfigure="false" public="false"/>
+
+        <service class="App\Post\Domain\Factory\PostCommandFactory"
+                 id="post.domain.factory.post_command_factory">
+            <argument type="service" id="data_extractor.request"/>
+        </service>
+
+        <service class="App\Post\Domain\Factory\PostQueryFactory"
+                 id="post.domain.factory.post_query_factory">
+            <argument type="service" id="data_extractor.request"/>
+
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service class="App\Post\Domain\Factory\PostFactory"
+                 id="post.domain.factory.post_factory">
+        </service>
+
+        <service class="App\Post\Domain\Factory\ResponseFactory"
+                 id="post.domain.factory.response_factory">
+        </service>
+    </services>
+</container>

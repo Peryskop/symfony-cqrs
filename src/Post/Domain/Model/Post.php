@@ -6,7 +6,7 @@ namespace App\Post\Domain\Model;
 
 use Symfony\Component\Uid\Uuid;
 
-class Post
+class Post implements PostInterface
 {
     public function __construct(
         private ?int $id,

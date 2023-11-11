@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Post\Application\Query;
 
-use App\Shared\Query\QueryInterface;
-
-final readonly class FindPostQuery implements QueryInterface
+final readonly class FindPostQuery implements FindPostQueryInterface
 {
     public function __construct(
         private ?string $uuid = null

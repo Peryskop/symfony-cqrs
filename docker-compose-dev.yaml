@@ -12,10 +12,11 @@ services:
       - '2222:22'
     volumes:
       - symfony-cqrs-api-app-sync:/app
+      - ./docker/php-fpm/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     environment:
       APP_ENV: dev
       APP_VERSION: dev
-      DATABASE_URL: mysql://root:@symfony-cqrs-db:3306/symfony-cqrs?serverVersion=MariaDB-10.6.10
+      DATABASE_URL: mysql://root:@symfony-cqrs-db:3306/symfony-cqrs?serverVersion=10.6.10-MariaDB
 
   symfony-cqrs-nginx:
     container_name: symfony-cqrs-nginx-dev

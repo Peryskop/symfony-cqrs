@@ -6,7 +6,6 @@ namespace App\Post\Infrastructure\Repository;
 
 use App\Post\Domain\Model\Post;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\Uid\Uuid;
 
 interface PostRepositoryInterface
 {
@@ -14,7 +13,7 @@ interface PostRepositoryInterface
 
     public function flush(): void;
 
-    public function deleteByUuid(Uuid $uuid): void;
+    public function deleteByUuid(string $uuid): void;
 
     /** @param Post[] $params */
     public function findByParams(array $params): QueryBuilder;

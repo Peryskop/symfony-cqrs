@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Post\Application\Query;
 
-use App\Shared\Query\QueryInterface;
-
-final readonly class GetPostsQuery implements QueryInterface
+final readonly class GetPostsQuery implements GetPostsQueryInterface
 {
     /** @param mixed[] $params */
     public function __construct(
@@ -16,7 +14,6 @@ final readonly class GetPostsQuery implements QueryInterface
     ) {
     }
 
-    /** @return mixed[] */
     public function getParams(): array
     {
         return $this->params;

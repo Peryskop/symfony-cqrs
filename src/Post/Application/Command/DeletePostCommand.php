@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Post\Application\Command;
 
-use App\Shared\Command\CommandInterface;
-
-final readonly class DeletePostCommand implements CommandInterface
+final readonly class DeletePostCommand implements DeletePostCommandInterface
 {
     public function __construct(
-        public ?string $uuid = null
+        private ?string $uuid = null
     ) {
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
     }
 }

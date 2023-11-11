@@ -1,24 +1,2 @@
-create_post:
-    path: /api/posts
-    controller: App\Post\Presentation\Rest\CreatePostAction
-    methods: POST
-
-update_post:
-    path: /api/posts/{uuid}
-    controller: App\Post\Presentation\Rest\UpdatePostAction
-    methods: PUT
-
-delete_post:
-    path: /api/posts/{uuid}
-    controller: App\Post\Presentation\Rest\DeletePostAction
-    methods: DELETE
-
-find_post:
-    path: /api/posts/{uuid}
-    controller: App\Post\Presentation\Rest\FindPostAction
-    methods: GET
-
-get_posts:
-    path: /api/posts
-    controller: App\Post\Presentation\Rest\GetPostsAction
-    methods: GET
+posts:
+    resource: '../src/Post/Resources/routes.yaml'

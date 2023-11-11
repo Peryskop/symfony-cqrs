@@ -5,35 +5,45 @@ declare(strict_types=1);
 namespace App\Post\Domain\Factory;
 
 use App\Post\Application\Command\CreatePostCommand;
+use App\Post\Application\Command\CreatePostCommandInterface;
 use App\Post\Application\Command\DeletePostCommand;
+use App\Post\Application\Command\DeletePostCommandInterface;
 use App\Post\Application\Command\UpdatePostCommand;
-use Symfony\Component\HttpFoundation\Request;
+use App\Post\Application\Command\UpdatePostCommandInterface;
+use App\Shared\DataCollector\DataExtractorInterface;
 use Symfony\Component\Uid\Uuid;
 
-final class PostCommandFactory implements PostCommandFactoryInterface
+final readonly class PostCommandFactory implements PostCommandFactoryInterface
 {
-    public function createCreatePostCommandFromRequest(Request $request): CreatePostCommand
+    /** @var mixed[] $data */
+    private array $data;
+
+    public function __construct(
+        private DataExtractorInterface $dataCollector
+    ) {
+        $this->data = $this->dataCollector->collect();
+    }
+
+    public function createCreatePostCommand(): CreatePostCommandInterface
     {
-        $data = $request->toArray();
         return new CreatePostCommand(
             uuid: Uuid::v4()->jsonSerialize(),
-            description: $data['description'] ?? null
+            description: $this->data['description'] ?? null
         );
     }
 
-    public function createUpdatePostCommandFromRequest(Request $request): UpdatePostCommand
+    public function createUpdatePostCommand(): UpdatePostCommandInterface
     {
-        $data = $request->toArray();
         return new UpdatePostCommand(
-            uuid: $request->get('uuid'),
-            description: $data['description'] ?? null
+            uuid: $this->data['uuid'],
+            description: $this->data['description'] ?? null
         );
     }
 
-    public function createDeletePostCommandFromRequest(Request $request): DeletePostCommand
+    public function createDeletePostCommand(): DeletePostCommandInterface
     {
         return new DeletePostCommand(
-            uuid: $request->get('uuid')
+            uuid: $this->data['uuid']
         );
     }
 }

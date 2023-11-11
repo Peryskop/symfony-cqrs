@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="false" autoconfigure="false" public="false"/>
+
+        <service class="App\Post\Application\Command\CreatePostCommand"
+                 id="post.application.command.create_post_command">
+            <factory service="post.domain.factory.post_command_factory" method="createCreatePostCommand"/>
+        </service>
+
+        <service class="App\Post\Application\Command\DeletePostCommand"
+                 id="post.application.command.delete_post_command">
+            <factory service="post.domain.factory.post_command_factory" method="createDeletePostCommand"/>
+        </service>
+
+        <service class="App\Post\Application\Command\UpdatePostCommand"
+                 id="post.application.command.update_post_command">
+            <factory service="post.domain.factory.post_command_factory" method="createUpdatePostCommand"/>
+        </service>
+    </services>
+</container>
